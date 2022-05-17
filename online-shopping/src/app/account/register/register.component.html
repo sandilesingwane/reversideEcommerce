@@ -1,0 +1,180 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+
+<div class="container">
+  <br /><br /><br />
+  <div class="row">
+    <div class="col m-auto">
+      <form
+        [formGroup]="form"
+        (ngSubmit)="registerUser()"
+        class="form-horizontal"
+        role="form"
+        style="border-bottom: 5px solid #add8e6; border-top: 5px solid #add8e6"
+      >
+
+        <h6 class="popUpText">User Registration</h6>
+        <hr />
+
+
+        <div class="form-group">
+          <label for="firstName" class="col-sm-9 control-label">First Name </label>
+          <div class="col-sm-9">
+            <input
+              type="text"
+              placeholder="first name"
+              name="firstName"
+              [formControl]="firstName"
+              class="form-control"
+              required
+              [ngClass]="email?.valid ? 'green-border' : 'red-border'"
+            />
+            <div *ngIf="firstName.errors && firstName.touched">
+              <small class="text-danger" *ngIf="firstName?.getError('required')"
+                >firstname is required field</small
+              >
+              <small class="text-danger" *ngIf="firstName.getError('email')"
+                >please enter first name</small
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lastName" class="col-sm-9 control-label">Last Name </label>
+          <div class="col-sm-9">
+            <input
+              type="text"
+              placeholder="last name"
+              name="firstName"
+              [formControl]="lastName"
+              class="form-control"
+              required
+              [ngClass]="lastName?.valid ? 'green-border' : 'red-border'"
+            />
+            <div *ngIf="lastName.errors && lastName.touched">
+              <small class="text-danger" *ngIf="firstName?.getError('required')"
+                >lastname is required field</small
+              >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName" class="col-sm-9 control-label">Contact number </label>
+          <div class="col-sm-9">
+            <input
+              type="number"
+              placeholder="phone nmber"
+              name="phoneNumber"
+              [formControl]="phoneNumber"
+              class="form-control"
+              required
+              [ngClass]="phoneNumber?.valid ? 'green-border' : 'red-border'"
+            />
+            <div *ngIf="phoneNumber.errors && phoneNumber.touched">
+              <small class="text-danger" *ngIf="phoneNumber?.getError('required')"
+                >phone number is required field</small
+              >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName" class="col-sm-9 control-label">Username </label>
+          <div class="col-sm-9">
+            <input
+              type="text"
+              placeholder=" username"
+              name="firstName"
+              [formControl]="username"
+              class="form-control"
+              required
+              [ngClass]="username?.valid ? 'green-border' : 'red-border'"
+            />
+            <div *ngIf="username.errors && username.touched">
+              <small class="text-danger" *ngIf="username?.getError('required')"
+                >username is required field</small
+              >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address" class="col-sm-9 control-label">Address </label>
+          <div class="col-sm-9">
+            <textarea
+              type="text"
+              placeholder="address"
+              name="address"
+              [formControl]="address"
+              class="form-control"
+              required
+              [ngClass]="address?.valid ? 'green-border' : 'red-border'"
+            ></textarea>
+            <div *ngIf="address.errors && address.touched">
+              <small class="text-danger" *ngIf="firstName?.getError('required')"
+                >address is required field</small
+              >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="login" class="col-sm-9 control-label">Email </label>
+          <div class="col-sm-9">
+            <input
+              type="email"
+              placeholder="email"
+              name="login"
+              [formControl]="email"
+              class="form-control"
+              required
+              [ngClass]="email?.valid ? 'green-border' : 'red-border'"
+            />
+            <div *ngIf="email.errors && email.touched">
+              <small class="text-danger" *ngIf="email?.getError('required')"
+                >email is required field</small
+              >
+              <small class="text-danger" *ngIf="email.getError('email')"
+                >please enter the valid email</small
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-sm-9 control-label">Password</label>
+          <div class="col-sm-9">
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              name="password"
+              required
+              class="form-control"
+              [formControl]="password"
+            />
+            <div *ngIf="password.errors && password.touched">
+              <small
+                class="text-danger"
+                [class.d-none]="!password.getError('required')"
+                >password is required field</small
+              >
+              <small
+              class="text-danger"
+              [class.d-none]="!password.getError('pattern')"
+              >Password must contain at least one number and one uppercase and lowercase letter, and at least 2 or more special characters</small
+            >
+            </div>
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary btn-block"
+        >
+          Register
+        </button>
+        <div class="text-center">
+          <p style="text-align: center; font-family: Georgia">
+            Already have an account? <a routerLink="/register">sign</a>
+          </p>
+        </div>
+
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,85 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+
+<title>register</title>
+<div class="container">
+  <br /><br /><br />
+  <div class="row">
+    <div class="col m-auto">
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        class="form-horizontal"
+        role="form"
+        style="border-bottom: 5px solid #add8e6; border-top: 5px solid #add8e6"
+      >
+        <br />
+        <h6 class="popUpText">User Sign In</h6>
+        <hr />
+
+        <div class="form-group">
+          <label for="login" class="col-sm-3 control-label">Email </label>
+          <div class="col-sm-9">
+            <input
+              type="email"
+              placeholder="email"
+              name="login"
+              [formControl]="email"
+              class="form-control"
+              required
+              [ngClass]="email?.valid ? 'green-border' : 'red-border'"
+            />
+            <div *ngIf="email.errors && email.touched">
+              <small class="text-danger" *ngIf="email?.getError('required')"
+                >email is required field</small
+              >
+              <small class="text-danger" *ngIf="email.getError('email')"
+                >please enter the valid email</small
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-sm-3 control-label">Password</label>
+          <div class="col-sm-9">
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              name="password"
+              required
+              class="form-control"
+              [formControl]="password"
+            />
+            <div *ngIf="password.errors && password.touched">
+              <small
+                class="text-danger"
+                [class.d-none]="!password.getError('required')"
+                >password is required field</small
+              >
+              <small
+              class="text-danger"
+              [class.d-none]="!password.getError('pattern')"
+              >Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more special characters</small
+            >
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary btn-block"
+        >
+          Login
+        </button>
+        <div class="text-center">
+          <p style="text-align: center; font-family: Georgia">
+            Don't have an account? <a routerLink="/register">Register</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
